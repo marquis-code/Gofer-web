@@ -41,7 +41,7 @@
                 <ShoppingBag size="48" />
               </div>
               <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4 leading-tight">
-                Promote your brand on Satisfy for a token!
+                Promote your brand on Gofer for a token!
               </h2>
               <p class="text-gray-700 text-lg mb-6">Reach more audience, make more sales.</p>
               
@@ -246,7 +246,7 @@
                 </div>
                 
                 <p class="text-gray-600 mb-4">
-                  Promote your restaurant on Satisfy and reach thousands of potential customers every day.
+                  Promote your restaurant on Gofer and reach thousands of potential customers every day.
                 </p>
                 
                 <ul class="space-y-3 mb-6">

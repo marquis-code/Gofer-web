@@ -18,7 +18,7 @@ export function useSubscriptions() {
       interval: 'week',
       features: [
         'Feature as one of the Top 4 Restaurants of the Week',
-        'Exclusive Satisfy Marketing Campaigns',
+        'Exclusive Gofer Marketing Campaigns',
         'Guaranteed Sales Boost of at Least 30%'
       ]
     },
@@ -29,7 +29,7 @@ export function useSubscriptions() {
       interval: 'month',
       features: [
         'Feature as one of the Top 4 Restaurants of the Week',
-        'Exclusive Satisfy Marketing Campaigns',
+        'Exclusive Gofer Marketing Campaigns',
         'One(1) Custom Graphic Design',
         'Guaranteed Sales Boost of at Least 30%'
       ],

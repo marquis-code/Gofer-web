@@ -1150,7 +1150,7 @@ const submitOrder = async () => {
 //   const vendorPhone = vendorData?.phoneNumber || "";
   
 //   // Create a more compact message format
-//   let message = `🛍️ ORDER FROM SATISFY\n`;
+//   let message = `🛍️ ORDER FROM Gofer\n`;
 //   message += `📋 Order ID: ${orderResponse?.value?.orderId || 'Pending'}\n`;
 //   message += `🚚 Delivery: ${deliveryMethod.value === 'delivery' ? '✅' : '❌'}\n\n`;
   
@@ -1263,7 +1263,7 @@ const chatWithVendor = () => {
   const vendorPhone = vendorData?.phoneNumber || "";
   
   // Create a more compact message format
-  let message = `🛍️ ORDER FROM SATISFY\n`;
+  let message = `🛍️ ORDER FROM Gofer\n`;
   message += `📋 Order ID: ${orderResponse?.value?.orderId || 'Pending'}\n`;
   message += `🚚 Delivery: ${deliveryMethod.value === 'delivery' ? '✅' : '❌'}\n\n`;
   

@@ -143,13 +143,13 @@
   };
   
   const shareViaWhatsApp = () => {
-    const text = `Check out ${props.vendor.name} on Satisfy! ${props.vendor.description}`;
+    const text = `Check out ${props.vendor.name} on Gofer! ${props.vendor.description}`;
     const url = `https://wa.me/?text=${encodeURIComponent(text + ' ' + shareUrl.value)}`;
     window.open(url, '_blank');
   };
   
   const shareViaTwitter = () => {
-    const text = `Check out ${props.vendor.name} on Satisfy! ${props.vendor.description}`;
+    const text = `Check out ${props.vendor.name} on Gofer! ${props.vendor.description}`;
     const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(shareUrl.value)}`;
     window.open(url, '_blank');
   };
@@ -160,8 +160,8 @@
   };
   
   const shareViaEmail = () => {
-    const subject = `Check out ${props.vendor.name} on Satisfy!`;
-    const body = `I found this amazing vendor on Satisfy!\n\n${props.vendor.name}\n${props.vendor.description}\n\nCheck it out: ${shareUrl.value}`;
+    const subject = `Check out ${props.vendor.name} on Gofer!`;
+    const body = `I found this amazing vendor on Gofer!\n\n${props.vendor.name}\n${props.vendor.description}\n\nCheck it out: ${shareUrl.value}`;
     const url = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.open(url);
   };

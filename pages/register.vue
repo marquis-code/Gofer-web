@@ -27,7 +27,7 @@
       <header class="py-6 px-6 md:px-10 bg-white shadow-sm">
         <div class="container mx-auto flex justify-between items-center">
           <NuxtLink to="/" class="flex items-center">
-            <!-- <img src="/images/Satisfy-logo.svg" alt="Satisfy" class="h-10" /> -->
+            <!-- <img src="/images/Gofer-logo.svg" alt="Gofer" class="h-10" /> -->
           </NuxtLink>
           <div class="flex items-center space-x-4">
             <NuxtLink to="/login" class="text-gray-700 hover:text-primary transition-colors">
@@ -91,7 +91,7 @@
                 
                 <!-- Benefits -->
                 <div class="mt-auto space-y-4 animate-fade-in animation-delay-500">
-                  <h3 class="text-lg font-semibold text-white/90">Why join Satisfy?</h3>
+                  <h3 class="text-lg font-semibold text-white/90">Why join Gofer?</h3>
                   
                   <div class="flex items-start">
                     <div class="flex-shrink-0 w-6 h-6 rounded-full bg-secondary/20 flex items-center justify-center mr-3">
@@ -717,16 +717,16 @@
             <div class="p-4 md:p-6 overflow-y-auto max-h-[60vh]">
               <div class="prose prose-sm max-w-none">
                 <h4>1. Introduction</h4>
-                <p>Welcome to Satisfy! These Terms and Conditions govern your use of our platform and services.</p>
+                <p>Welcome to Gofer! These Terms and Conditions govern your use of our platform and services.</p>
                 
                 <h4>2. Acceptance of Terms</h4>
-                <p>By accessing or using Satisfy, you agree to be bound by these Terms and Conditions.</p>
+                <p>By accessing or using Gofer, you agree to be bound by these Terms and Conditions.</p>
                 
                 <h4>3. User Accounts</h4>
                 <p>You are responsible for maintaining the confidentiality of your account information and for all activities that occur under your account.</p>
                 
                 <h4>4. Ordering and Payment</h4>
-                <p>All orders placed through Satisfy are subject to acceptance and availability. Payment must be made at the time of ordering.</p>
+                <p>All orders placed through Gofer are subject to acceptance and availability. Payment must be made at the time of ordering.</p>
                 
                 <h4>5. Delivery</h4>
                 <p>Delivery times are estimates and may vary based on various factors including location, traffic, and weather conditions.</p>

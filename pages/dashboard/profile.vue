@@ -473,7 +473,7 @@ const profileData = reactive<ProfileData>({
   workingHours: []
 })
 
-const siteUrl = ref(process.client ? window.location.origin : 'https://satisfy.com')
+const siteUrl = ref(process.client ? window.location.origin : 'https://Gofer.com')
 const computedName = computed(() => {
   return `${siteUrl.value}/${vendor?.value?.slug}`
 })

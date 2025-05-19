@@ -3,7 +3,7 @@
       <div v-if="showWelcome" class="fixed inset-0 z-50 flex items-center justify-center bg-white">
         <div class="text-center max-w-md px-6">
           <div class="relative w-64 h-64 mx-auto mb-6">
-            <img src="@/assets/illustrations/welcome-food.svg" alt="Welcome to Satisfy" class="w-full h-full object-contain animate-float" />
+            <img src="@/assets/illustrations/welcome-food.svg" alt="Welcome to Gofer" class="w-full h-full object-contain animate-float" />
             <div class="absolute -top-4 -right-4 animate-bounce-slow">
               <Utensils class="text-red-500" size="32" />
             </div>
@@ -12,7 +12,7 @@
             </div>
           </div>
           
-          <h1 class="text-3xl font-bold mb-3 text-gray-800">Welcome to <span class="text-red-500">Satisfy</span></h1>
+          <h1 class="text-3xl font-bold mb-3 text-gray-800">Welcome to <span class="text-red-500">Gofer</span></h1>
           <p class="text-gray-600 mb-8">Your favorite food, delivered fast to your door. Discover the best food vendors in FUNAAB.</p>
           
           <div class="relative">

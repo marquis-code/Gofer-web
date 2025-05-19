@@ -4,7 +4,7 @@
       <header class="bg-white shadow-sm py-4">
         <div class="container mx-auto px-4 flex items-center justify-between">
           <NuxtLink to="/" class="flex items-center">
-            <!-- <img src="/images/Satisfy-logo.svg" alt="Satisfy Logo" class="h-10" /> -->
+            <!-- <img src="/images/Gofer-logo.svg" alt="Gofer Logo" class="h-10" /> -->
           </NuxtLink>
           
           <div class="flex items-center space-x-4">
@@ -53,7 +53,7 @@
             <NuxtLink to="/invest" class="hover:text-primary transition-colors">Invest</NuxtLink>
             <NuxtLink to="/partner" class="hover:text-primary transition-colors">Partner</NuxtLink>
           </div>
-          <p>© {{ new Date().getFullYear() }} Satisfy. All rights reserved.</p>
+          <p>© {{ new Date().getFullYear() }} Gofer. All rights reserved.</p>
         </div>
       </footer>
     </div>

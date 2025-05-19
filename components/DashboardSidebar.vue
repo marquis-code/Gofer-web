@@ -25,7 +25,7 @@
       <div class="p-4 border-b border-gray-700 flex items-center justify-between">
         <div :class="['flex items-center', isCollapsed && 'justify-center w-full']">
           <!-- <div v-if="!isCollapsed" class="h-8 bg-gradient-to-r from-blue-500 to-blue-600 rounded px-2 text-white font-bold shadow-glow">LOGO</div> -->
-          <img src="@/assets/img/satisfy-logo-white.png" class="h-10 w-10" />
+          <img src="@/assets/img/erranders.png" class="h-10 w-10" />
           <!-- <div v-else class="h-8 w-8 bg-gradient-to-r from-blue-500 to-blue-600 rounded flex items-center justify-center text-white font-bold shadow-glow">L</div> -->
         </div>
         

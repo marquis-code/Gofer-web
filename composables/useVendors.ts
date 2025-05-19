@@ -22,7 +22,7 @@ export function useVendors() {
     {
       id: 1,
       name: 'Elihemspice foods',
-      description: '...Here to satisfy your cravin',
+      description: '...Here to Gofer your cravin',
       image: meal1,
       rating: 4.5,
       reviewCount: 300,

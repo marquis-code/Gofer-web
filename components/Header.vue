@@ -3,7 +3,7 @@
       <div class="container mx-auto flex items-center justify-between">
         <!-- Logo -->
         <div class="flex items-center">
-          <img src="@/assets/img/satisfy-logo-coloured.png" alt="eleste" class="h-8 mr-6" />
+          <img src="@/assets/img/Gofer-logo-coloured.png" alt="eleste" class="h-8 mr-6" />
           
           <!-- Location Selector -->
           <div class="hidden md:flex items-center space-x-2 cursor-pointer">

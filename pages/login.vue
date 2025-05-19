@@ -26,7 +26,7 @@
         <header class="py-6 px-6 md:px-10 bg-white shadow-sm">
           <div class="container mx-auto flex justify-between items-center">
             <NuxtLink to="/" class="flex items-center">
-              <img src="@/assets/img/satisfy-logo-coloured.png" alt="Satisfy" class="h-10" />
+              <img src="@/assets/img/erranders.png" alt="Gofer" class="h-10" />
             </NuxtLink>
             <div class="flex items-center space-x-4">
               <NuxtLink to="/register" class="text-gray-700 hover:text-primary transition-colors">
@@ -67,7 +67,7 @@
             <!-- Right Side - Login Form -->
             <div class="bg-white rounded-2xl shadow-xl p-8 animate-fade-in animation-delay-300">
               <div class="text-center mb-8">
-                <h2 class="text-2xl font-semibold text-gray-800">Sign In to Satisfy</h2>
+                <h2 class="text-2xl font-semibold text-gray-800">Sign In to Gofer</h2>
                 <p class="text-gray-600 mt-2">
                   Access your account to {{ selectedRole === 'customer' ? 'start ordering' : 'manage your business' }}
                 </p>
@@ -235,7 +235,7 @@
               <NuxtLink to="/privacy" class="hover:text-primary transition-colors">Privacy</NuxtLink>
               <NuxtLink to="/terms" class="hover:text-primary transition-colors">Terms</NuxtLink>
             </div>
-            <p>© {{ new Date().getFullYear() }} Satisfy. All rights reserved.</p>
+            <p>© {{ new Date().getFullYear() }} Gofer. All rights reserved.</p>
           </div>
         </footer>
       </div>

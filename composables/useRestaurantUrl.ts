@@ -8,7 +8,7 @@ import { ref, computed } from 'vue'
  */
 export function useRestaurantUrl(baseUrl?: string) {
   // Get the base URL from the browser if not provided
-  const siteUrl = ref(baseUrl || (process.client ? window.location.origin : 'https://satisfy.com'))
+  const siteUrl = ref(baseUrl || (process.client ? window.location.origin : 'https://Gofer.com'))
   
   /**
    * Formats a restaurant name for use in a URL

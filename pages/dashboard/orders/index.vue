@@ -1177,7 +1177,7 @@ const useMeals = () => {
       'Fresh ingredients combined to create a perfect harmony of flavors.',
       'A spicy and flavorful dish that will tantalize your taste buds.',
       'Light and refreshing, perfect for a summer day.',
-      'Rich and savory, guaranteed to satisfy your cravings.'
+      'Rich and savory, guaranteed to Gofer your cravings.'
     ]
     
     const result: Meal[] = []
