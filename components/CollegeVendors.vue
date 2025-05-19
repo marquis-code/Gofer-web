@@ -1,6 +1,6 @@
 <template>
-  <div class="vendor-experience relative overflow-hidden">
-    <!-- Animated Background -->
+  <div class="vendor-experience container mx-auto mt-10 relative overflow-hidden">
+    <!-- Animated Background with Food Pattern -->
     <div class="animated-bg absolute inset-0 -z-10"></div>
     
     <!-- Floating Food Icons Background -->
@@ -11,30 +11,26 @@
     </div>
     
     <!-- Header with Search -->
-    <header class="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-gray-900/80 shadow-lg px-4 py-3 mb-4">
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-white/90 shadow-lg px-4 py-3 mb-4">
       <div class="flex items-center justify-between mb-3">
         <h1 class="text-2xl font-bold text-gradient">FoodFinder</h1>
         <div class="flex space-x-2">
-          <button @click="toggleTheme" class="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
-            <Sun v-if="isDarkMode" size="20" />
-            <Moon v-else size="20" />
-          </button>
-          <button class="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
+          <!-- <button class="p-2 rounded-full bg-red-50 text-red-500 animate-pulse-subtle">
             <Bell size="20" />
-          </button>
+          </button> -->
         </div>
       </div>
       
       <!-- Search with animated border -->
       <div class="search-container relative mb-4">
         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-          <Search class="text-gray-400 dark:text-gray-600" size="18" />
+          <Search class="text-gray-400" size="18" />
         </div>
         <input 
           v-model="searchQuery" 
           type="text" 
           placeholder="Find your favorite food..." 
-          class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 focus:outline-none"
+          class="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 bg-white text-gray-800 focus:outline-none"
           @input="handleSearch"
           @focus="isSearchFocused = true"
           @blur="isSearchFocused = false"
@@ -53,7 +49,7 @@
             :class="[
               selectedCategories.includes(category) 
                 ? 'bg-gradient-to-r from-red-500 to-orange-500 text-white shadow-lg shadow-red-500/20' 
-                : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300'
+                : 'bg-gray-100 text-gray-700'
             ]"
           >
             {{ category }}
@@ -68,15 +64,15 @@
       <div class="status-bar flex items-center justify-between mb-6">
         <div class="flex items-center">
           <span class="pulse-dot"></span>
-          <span class="text-sm font-medium ml-2 text-gray-700 dark:text-gray-300">
+          <span class="text-sm font-medium ml-2 text-gray-700">
             {{ isLoading ? 'Searching for vendors...' : `${filteredVendors.length} vendors found` }}
           </span>
         </div>
         <div class="flex items-center space-x-2">
-          <button @click="toggleView('grid')" class="p-1.5 rounded" :class="{'bg-red-100 dark:bg-red-900/30 text-red-500': viewMode === 'grid'}">
+          <button @click="toggleView('grid')" class="p-1.5 rounded" :class="{'bg-red-100 text-red-500': viewMode === 'grid'}">
             <Grid size="18" />
           </button>
-          <button @click="toggleView('swiper')" class="p-1.5 rounded" :class="{'bg-red-100 dark:bg-red-900/30 text-red-500': viewMode === 'swiper'}">
+          <button @click="toggleView('swiper')" class="p-1.5 rounded" :class="{'bg-red-100 text-red-500': viewMode === 'swiper'}">
             <Layers size="18" />
           </button>
         </div>
@@ -89,13 +85,13 @@
             <Pizza size="24" class="text-red-500" />
           </div>
         </div>
-        <p class="mt-4 text-gray-600 dark:text-gray-400 animate-pulse">Discovering delicious options...</p>
+        <p class="mt-4 text-gray-600 animate-pulse">Discovering delicious options...</p>
       </div>
       
       <!-- Swiper View (Default for Mobile) -->
       <div v-else-if="viewMode === 'swiper' || isMobile" class="vendor-swiper-container">
-        <!-- Swiper Navigation -->
-        <div class="swiper-navigation flex justify-between items-center mb-4">
+        <!-- Swiper Navigation - Only show if there are vendors -->
+        <div v-if="filteredVendors.length > 0" class="swiper-navigation flex justify-between items-center mb-4">
           <button 
             @click="prevVendor" 
             class="swipe-btn prev-btn"
@@ -128,8 +124,9 @@
           </button>
         </div>
         
-        <!-- Swiper Cards -->
+        <!-- Swiper Cards - Only show if there are vendors -->
         <div 
+          v-if="filteredVendors.length > 0"
           class="vendor-swiper relative h-[500px] overflow-hidden"
           ref="swiperContainer"
           @touchstart="touchStart"
@@ -145,7 +142,7 @@
             @click="index === currentVendorIndex ? handleSelectedVendor(vendor) : setCurrentVendor(index)"
           >
             <!-- Card Content -->
-            <div class="card-content h-full rounded-2xl overflow-hidden shadow-2xl relative bg-white dark:bg-gray-800 flex flex-col transform transition-all duration-500">
+            <div class="card-content h-full rounded-2xl overflow-hidden shadow-2xl relative bg-white flex flex-col transform transition-all duration-500">
               <!-- Card Image -->
               <div class="relative h-48 overflow-hidden">
                 <img 
@@ -198,16 +195,16 @@
               <!-- Card Details -->
               <div class="p-4 flex-grow flex flex-col">
                 <!-- Description -->
-                <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">{{ getVendorDescription(vendor) }}</p>
+                <p class="text-sm text-gray-600 mb-3">{{ getVendorDescription(vendor) }}</p>
                 
                 <!-- Hours -->
                 <div class="text-sm mb-4">
                   <div class="flex items-center">
                     <Clock size="14" class="mr-1 text-gray-500" />
-                    <span v-if="isVendorOpen(vendor)" class="text-green-600 dark:text-green-400 font-medium">
+                    <span v-if="isVendorOpen(vendor)" class="text-green-600 font-medium">
                       Open until {{ getClosingTime(vendor) }}
                     </span>
-                    <span v-else class="text-red-600 dark:text-red-400">
+                    <span v-else class="text-red-600">
                       {{ getNextOpeningInfo(vendor) }}
                     </span>
                   </div>
@@ -217,17 +214,17 @@
                 <div class="flex items-center mb-4">
                   <div class="flex">
                     <Star v-for="i in 5" :key="i" size="16" 
-                      :class="i <= getRandomRating(vendor) ? 'text-yellow-400' : 'text-gray-300 dark:text-gray-600'" />
+                      :class="i <= getRandomRating(vendor) ? 'text-yellow-400' : 'text-gray-300'" />
                   </div>
-                  <span class="text-sm text-gray-600 dark:text-gray-400 ml-2">{{ getRandomReviews(vendor) }} reviews</span>
+                  <span class="text-sm text-gray-600 ml-2">{{ getRandomReviews(vendor) }} reviews</span>
                 </div>
                 
                 <!-- Popular Items -->
                 <div class="mb-4">
-                  <h4 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Popular Items:</h4>
+                  <h4 class="text-sm font-medium text-gray-700 mb-2">Popular Items:</h4>
                   <div class="flex space-x-2 overflow-x-auto pb-2">
                     <div v-for="(item, i) in getPopularItems(vendor)" :key="i" 
-                      class="popular-item px-2 py-1 text-xs rounded-full bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
+                      class="popular-item px-2 py-1 text-xs rounded-full bg-gray-100 text-gray-700">
                       {{ item }}
                     </div>
                   </div>
@@ -264,17 +261,63 @@
           </div>
         </div>
         
-        <!-- Empty State -->
+        <!-- Enhanced Animated Empty State -->
         <div v-if="filteredVendors.length === 0" class="empty-state flex flex-col items-center justify-center py-10">
-          <div class="empty-plate">
-            <Utensils size="40" class="text-gray-300 dark:text-gray-700" />
+          <!-- Animated Food Search Scene -->
+          <div class="empty-state-animation relative w-full max-w-xs h-64 mx-auto mb-6">
+            <!-- Animated plate -->
+            <div class="plate-container absolute inset-0 flex items-center justify-center">
+              <div class="plate"></div>
+              <div class="plate-shadow"></div>
+            </div>
+            
+            <!-- Animated magnifying glass -->
+            <div class="magnifying-glass">
+              <div class="glass-handle"></div>
+            </div>
+            
+            <!-- Animated food items that fly away -->
+            <div v-for="i in 6" :key="`food-item-${i}`" class="flying-food-item" :style="`--delay: ${i * 0.2}s; --angle: ${i * 60}deg`">
+              <component :is="foodIcons[i % foodIcons.length]" :size="16 + (i % 10)" :class="foodIconColors[i % foodIconColors.length]" />
+            </div>
+            
+            <!-- Animated question marks -->
+            <div v-for="i in 3" :key="`question-${i}`" class="question-mark" :style="`--delay: ${i * 0.3}s; --offset: ${-15 + i * 15}px`">?</div>
+            
+            <!-- Animated chef hat -->
+            <div class="chef-hat">
+              <!-- <Chef size="32" class="text-gray-400" /> -->
+            </div>
           </div>
-          <h3 class="mt-4 text-xl font-bold text-gray-700 dark:text-gray-300">No vendors found</h3>
-          <p class="mt-2 text-gray-500 dark:text-gray-500 text-center">
-            We couldn't find any vendors matching your criteria.
+          
+          <h3 class="mt-4 text-2xl font-bold text-gray-700 animate-bounce-text">No vendors found</h3>
+          <p class="mt-2 text-gray-500 text-center max-w-xs mx-auto animate-fade-in" style="--delay: 0.3s">
+            We couldn't find any vendors matching <span class="font-semibold text-red-500">"{{ searchQuery }}"</span>
           </p>
-          <button @click="resetFilters" class="mt-4 px-4 py-2 bg-red-500 text-white rounded-full">
-            Reset Filters
+          <p class="text-gray-500 text-center max-w-xs mx-auto mt-1 animate-fade-in" style="--delay: 0.5s">
+            Try different keywords or browse our categories
+          </p>
+          
+          <!-- Animated suggestions -->
+          <div class="mt-6 flex flex-wrap justify-center gap-2 max-w-xs mx-auto animate-fade-in" style="--delay: 0.7s">
+            <button 
+              v-for="(suggestion, i) in searchSuggestions" 
+              :key="suggestion"
+              @click="searchQuery = suggestion; handleSearch()"
+              class="suggestion-pill px-3 py-1.5 rounded-full text-sm bg-red-50 text-red-500 hover:bg-red-100 transition-all"
+              :style="`animation-delay: ${0.7 + i * 0.1}s`"
+            >
+              {{ suggestion }}
+            </button>
+          </div>
+          
+          <button 
+            @click="resetFilters" 
+            class="mt-8 px-6 py-3 bg-gradient-to-r from-red-500 to-orange-500 text-white rounded-full shadow-lg shadow-red-500/20 hover:shadow-xl hover:scale-105 transition-all duration-300 animate-fade-in flex items-center"
+            style="--delay: 1s"
+          >
+            <RefreshCw size="18" class="mr-2 animate-spin-slow" />
+            Show All Vendors
           </button>
         </div>
       </div>
@@ -285,7 +328,7 @@
         <div 
           v-for="(vendor, index) in filteredVendors" 
           :key="vendor._id"
-          class="vendor-card-grid rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 hover:shadow-xl transition-all duration-300 cursor-pointer"
+          class="vendor-card-grid rounded-xl overflow-hidden shadow-lg bg-white hover:shadow-xl transition-all duration-300 cursor-pointer"
           @click="handleSelectedVendor(vendor)"
         >
           <!-- Card Content (Simplified) -->
@@ -314,18 +357,18 @@
           
           <div class="p-3">
             <div class="flex justify-between items-center">
-              <div class="flex items-center text-sm text-gray-600 dark:text-gray-400">
+              <div class="flex items-center text-sm text-gray-600">
                 <Clock size="14" class="mr-1" />
-                <span v-if="isVendorOpen(vendor)" class="text-green-600 dark:text-green-400">
+                <span v-if="isVendorOpen(vendor)" class="text-green-600">
                   Open
                 </span>
-                <span v-else class="text-red-600 dark:text-red-400">
+                <span v-else class="text-red-600">
                   Closed
                 </span>
               </div>
               
               <button 
-                class="p-2 rounded-full bg-gray-100 dark:bg-gray-700"
+                class="p-2 rounded-full bg-gray-100"
                 @click.stop="toggleFavorite(vendor._id)"
               >
                 <Heart size="16" :class="favoriteVendors[vendor._id] ? 'text-red-500 fill-red-500' : 'text-gray-400'" />
@@ -337,7 +380,7 @@
     </main>
     
     <!-- Bottom Navigation -->
-    <nav class="fixed bottom-0 inset-x-0 bg-white dark:bg-gray-900 shadow-lg rounded-t-3xl z-50">
+    <!-- <nav class="fixed bottom-0 inset-x-0 bg-white shadow-lg rounded-t-3xl z-50">
       <div class="flex justify-around items-center h-16">
         <button class="nav-btn active">
           <Home size="20" />
@@ -361,7 +404,7 @@
           <span>Profile</span>
         </button>
       </div>
-    </nav>
+    </nav> -->
     
     <!-- Vendor Closed Modal -->
     <Teleport to="body">
@@ -418,9 +461,9 @@ import {
   Grid,
   Layers,
   Bell,
-  Sun,
-  Moon,
-  ShoppingBag
+  ShoppingBag,
+  RefreshCw,
+  Chef
 } from 'lucide-vue-next';
 import { useFetchVendors } from '@/composables/modules/vendor/useFetchVendors';
 
@@ -431,7 +474,6 @@ const selectedVendor = ref(null);
 const isSearchFocused = ref(false);
 const swiperContainer = ref(null);
 const isMobile = ref(window.innerWidth < 768);
-const isDarkMode = ref(false);
 const viewMode = ref('swiper'); // 'swiper' or 'grid'
 const currentVendorIndex = ref(0);
 
@@ -481,6 +523,11 @@ const favoriteVendors = reactive<Record<string, boolean>>({});
 const currentDay = ref('');
 const currentTime = ref('');
 const selectedCategories = ref<string[]>([]);
+
+// Search suggestions for empty state
+const searchSuggestions = [
+  'Pizza', 'Burger', 'Sushi', 'Vegan', 'Breakfast', 'Coffee', 'Dessert', 'Healthy'
+];
 
 // Food icons for animations
 const foodIcons = [Pizza, Coffee, Utensils, Soup, Salad];
@@ -570,12 +617,6 @@ onMounted(() => {
       }
     });
   }
-  
-  // Check for dark mode preference
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    isDarkMode.value = true;
-    document.documentElement.classList.add('dark');
-  }
 });
 
 onUnmounted(() => {
@@ -590,16 +631,6 @@ const handleResize = () => {
   isMobile.value = window.innerWidth < 768;
   if (isMobile.value) {
     viewMode.value = 'swiper';
-  }
-};
-
-// Toggle theme
-const toggleTheme = () => {
-  isDarkMode.value = !isDarkMode.value;
-  if (isDarkMode.value) {
-    document.documentElement.classList.add('dark');
-  } else {
-    document.documentElement.classList.remove('dark');
   }
 };
 
@@ -932,7 +963,6 @@ const getPopularItems = (vendor) => {
   --bg-dark: #f3f4f6;
 }
 
-
 .vendor-experience {
   min-height: 100vh;
   background-color: var(--bg);
@@ -941,13 +971,11 @@ const getPopularItems = (vendor) => {
 
 /* Animated Background */
 .animated-bg {
-  background: linear-gradient(135deg, #fee2e2 0%, #fff7ed 100%);
-  opacity: 0.5;
-}
-
-.dark .animated-bg {
-  background: linear-gradient(135deg, #7f1d1d 0%, #7c2d12 100%);
-  opacity: 0.1;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(254, 202, 202, 0.2) 0%, transparent 20%),
+    radial-gradient(circle at 80% 50%, rgba(254, 215, 170, 0.2) 0%, transparent 20%),
+    radial-gradient(circle at 40% 80%, rgba(254, 240, 138, 0.2) 0%, transparent 20%),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f87171' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 
 /* Food Icons Float */
@@ -1088,11 +1116,6 @@ const getPopularItems = (vendor) => {
   transition: all 0.3s ease;
 }
 
-.dark .swipe-btn {
-  background-color: var(--bg-dark);
-  color: var(--primary);
-}
-
 .swipe-btn:hover {
   transform: scale(1.1);
   background-color: var(--primary);
@@ -1111,10 +1134,6 @@ const getPopularItems = (vendor) => {
   border-radius: 50%;
   background-color: #e5e7eb;
   transition: all 0.3s ease;
-}
-
-.dark .pagination-dot {
-  background-color: #4b5563;
 }
 
 .pagination-dot.active {
@@ -1252,11 +1271,6 @@ const getPopularItems = (vendor) => {
   color: #9ca3af;
 }
 
-.dark .order-btn.disabled {
-  background-color: #374151;
-  color: #6b7280;
-}
-
 .order-btn.enabled:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 15px -3px rgba(239, 68, 68, 0.3);
@@ -1280,24 +1294,125 @@ const getPopularItems = (vendor) => {
   margin-left: 4px;
 }
 
-/* Empty State */
+/* Enhanced Empty State Animation */
 .empty-state {
   min-height: 300px;
 }
 
-.empty-plate {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background-color: #f3f4f6;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: float 3s ease-in-out infinite;
+.empty-state-animation {
+  position: relative;
+  overflow: hidden;
 }
 
-.dark .empty-plate {
-  background-color: #1f2937;
+/* Plate animation */
+.plate-container {
+  animation: float 4s ease-in-out infinite;
+}
+
+.plate {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06),
+    inset 0 -2px 4px 0 rgba(0, 0, 0, 0.05),
+    inset 0 2px 4px 0 rgba(255, 255, 255, 0.5);
+}
+
+.plate-shadow {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 10px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  filter: blur(4px);
+  animation: plateShadow 4s ease-in-out infinite;
+}
+
+/* Magnifying glass animation */
+.magnifying-glass {
+  position: absolute;
+  top: 20%;
+  right: 20%;
+  width: 40px;
+  height: 40px;
+  border: 3px solid #ef4444;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  animation: searchMove 5s ease-in-out infinite;
+}
+
+.glass-handle {
+  position: absolute;
+  bottom: -15px;
+  right: -5px;
+  width: 5px;
+  height: 20px;
+  background: #ef4444;
+  transform: rotate(45deg);
+  border-radius: 999px;
+}
+
+/* Flying food items */
+.flying-food-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  animation: flyAway 3s ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+/* Question marks */
+.question-mark {
+  position: absolute;
+  top: 20%;
+  left: calc(50% + var(--offset, 0px));
+  font-size: 24px;
+  font-weight: bold;
+  color: #9ca3af;
+  animation: questionPop 2s ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+/* Chef hat */
+.chef-hat {
+  position: absolute;
+  bottom: 20%;
+  left: 20%;
+  animation: chefMove 4s ease-in-out infinite;
+}
+
+/* Suggestion pills */
+.suggestion-pill {
+  animation: fadeInScale 0.5s ease-out forwards;
+  animation-delay: var(--delay, 0s);
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+/* Animated text */
+.animate-bounce-text {
+  animation: bounceText 2s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards;
+  animation-delay: var(--delay, 0s);
+}
+
+.animate-pulse-subtle {
+  animation: pulseShadow 3s infinite;
+}
+
+.animate-spin-slow {
+  animation: spinSlow 3s linear infinite;
 }
 
 /* Bottom Navigation */
@@ -1361,11 +1476,6 @@ const getPopularItems = (vendor) => {
   animation: modalPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.dark .modal-container {
-  background-color: #1f2937;
-  color: white;
-}
-
 .modal-icon {
   width: 80px;
   height: 80px;
@@ -1377,10 +1487,6 @@ const getPopularItems = (vendor) => {
   margin: -60px auto 20px;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   position: relative;
-}
-
-.dark .modal-icon {
-  background-color: #111827;
 }
 
 .modal-icon::after {
@@ -1406,10 +1512,6 @@ const getPopularItems = (vendor) => {
   margin-bottom: 1.5rem;
 }
 
-.dark .modal-text {
-  color: #9ca3af;
-}
-
 .modal-actions {
   display: flex;
   justify-content: center;
@@ -1423,11 +1525,6 @@ const getPopularItems = (vendor) => {
   border-radius: 0.5rem;
   font-weight: 500;
   transition: all 0.3s ease;
-}
-
-.dark .modal-btn-secondary {
-  background-color: #374151;
-  color: #f9fafb;
 }
 
 .modal-btn-primary {
@@ -1472,6 +1569,15 @@ const getPopularItems = (vendor) => {
 }
 
 @keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinSlow {
   0% {
     transform: rotate(0deg);
   }
@@ -1553,6 +1659,105 @@ const getPopularItems = (vendor) => {
   100% {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@keyframes pulseShadow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+  50% {
+    box-shadow: 0 0 10px 0 rgba(239, 68, 68, 0.3);
+  }
+}
+
+/* Empty state animations */
+@keyframes plateShadow {
+  0%, 100% {
+    transform: translateX(-50%) scale(1);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateX(-50%) scale(0.8);
+    opacity: 0.1;
+  }
+}
+
+@keyframes searchMove {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(-30px, 20px) rotate(-15deg);
+  }
+  50% {
+    transform: translate(-10px, -20px) rotate(0deg);
+  }
+  75% {
+    transform: translate(20px, 10px) rotate(15deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+@keyframes flyAway {
+  0% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(calc(cos(var(--angle, 0deg)) * 100px), calc(sin(var(--angle, 0deg)) * 100px)) scale(0.5) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes questionPop {
+  0%, 100% {
+    transform: scale(1) translateY(0);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.2) translateY(-10px);
+    opacity: 1;
+  }
+}
+
+@keyframes chefMove {
+  0% {
+    transform: translateX(0) rotate(0deg);
+  }
+  25% {
+    transform: translateX(20px) rotate(10deg);
+  }
+  50% {
+    transform: translateX(0) rotate(0deg);
+  }
+  75% {
+    transform: translateX(-20px) rotate(-10deg);
+  }
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+}
+
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounceText {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
   }
 }
 
