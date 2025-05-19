@@ -1,4 +1,4 @@
-# robots.txt for satisfy.africa
+# robots.txt for gofer.africa
 User-agent: *
 Allow: /
 
@@ -26,4 +26,4 @@ Allow: /images/
 Crawl-delay: 10
 
 # Sitemap location
-Sitemap: https://satisfy.africa/sitemap.xml
+Sitemap: https://gofer.africa/sitemap.xml

@@ -5,6 +5,10 @@ content: ["app/**/*.{ts,tsx}", "components/**/*.{ts,tsx}", "*.{js,ts,jsx,tsx,mdx
 theme: {
   extend: {
     colors: {
+      "brand-green": "rgb(42, 115, 42)",
+      "brand-green-light": "rgb(62, 145, 62)",
+      "brand-green-dark": "rgb(32, 95, 32)",
+      "brand-green-darker": "rgb(22, 75, 22)",
       border: "hsl(var(--border))",
       input: "hsl(var(--input))",
       ring: "hsl(var(--ring))",
@@ -39,6 +43,66 @@ theme: {
         foreground: "hsl(var(--card-foreground))",
       },
     },
+    animation: {
+      "bounce-slow": "bounceSlow 2s ease-in-out infinite",
+      "pulse-slow": "pulseSlow 3s ease-in-out infinite",
+      "bounce-once": "bounceOnce 0.6s ease-in-out",
+      "bounce-x": "bounceX 0.5s ease-in-out",
+      "bounce-x-reverse": "bounceXReverse 0.5s ease-in-out",
+      shimmer: "shimmer 2s infinite linear",
+      float: "float 3s ease-in-out infinite",
+      "float-rotate": "floatRotate 5s ease-in-out infinite",
+      blob: "blob 7s infinite",
+      "fade-in-up": "fadeInUp 0.8s ease-out forwards",
+    },
+    keyframes: {
+      shimmer: {
+        "0%": { transform: "translateX(-100%)" },
+        "100%": { transform: "translateX(100%)" },
+      },
+      float: {
+        "0%, 100%": { transform: "translateY(0)" },
+        "50%": { transform: "translateY(-10px)" },
+      },
+      floatRotate: {
+        "0%, 100%": { transform: "translateY(0) rotate(0deg)" },
+        "25%": { transform: "translateY(-8px) rotate(5deg)" },
+        "50%": { transform: "translateY(0) rotate(10deg)" },
+        "75%": { transform: "translateY(8px) rotate(5deg)" },
+      },
+      blob: {
+        "0%, 100%": { transform: "translate(0, 0) scale(1)" },
+        "25%": { transform: "translate(20px, 15px) scale(1.1)" },
+        "50%": { transform: "translate(-15px, 10px) scale(0.9)" },
+        "75%": { transform: "translate(15px, -20px) scale(1.05)" },
+      },
+      fadeInUp: {
+        "0%": { opacity: "0", transform: "translateY(10px)" },
+        "100%": { opacity: "1", transform: "translateY(0)" },
+      },
+      bounceSlow: {
+        "0%, 100%": { transform: "translateY(0)" },
+        "50%": { transform: "translateY(-10px)" },
+      },
+      pulseSlow: {
+        "0%, 100%": { transform: "scale(1)", opacity: "0.7" },
+        "50%": { transform: "scale(1.1)", opacity: "0.5" },
+      },
+      bounceOnce: {
+        "0%, 100%": { transform: "translateY(0)" },
+        "50%": { transform: "translateY(-5px)" },
+      },
+      bounceX: {
+        "0%, 100%": { transform: "translateX(0)" },
+        "20%, 60%": { transform: "translateX(10px)" },
+        "40%, 80%": { transform: "translateX(5px)" },
+      },
+      bounceXReverse: {
+        "0%, 100%": { transform: "translateX(0)" },
+        "20%, 60%": { transform: "translateX(-10px)" },
+        "40%, 80%": { transform: "translateX(-5px)" },
+      },
+    }
     // borderRadius: {
     //   lg: "var(--radius)",
     //   md: "calc(var(--radius) - 2px)",

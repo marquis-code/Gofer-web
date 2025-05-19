@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   target: "static",
   app: {
     head: {
-      title: "Satisfy | Your favorite food, delivered fast to your door. Discover the best food vendors in FUNAAB.",
+      title: "Gofer | Campus food delivery, by students, for students.",
       htmlAttrs: { lang: "en" },
       meta: [
         { charset: "utf-8" },
@@ -13,34 +13,34 @@ export default defineNuxtConfig({
         { name: "format-detection", content: "telephone=no" },
         { 
           name: "description", 
-          content: "Your favorite food, delivered fast to your door. Discover the best food vendors in FUNAAB." 
+          content: "Campus food delivery, by students, for students." 
         },
-        { name: "author", content: "Satisfy" },
+        { name: "author", content: "Gofer" },
         
         // Open Graph
         { property: 'og:type', content: 'website' },
-        { property: 'og:url', content: 'https://satisfy.africa/' },
-        { property: 'og:title', content: 'Satisfy | Your favorite food, delivered fast to your door. Discover the best food vendors in FUNAAB.' },
+        { property: 'og:url', content: 'https://Gofer.africa/' },
+        { property: 'og:title', content: 'Gofer | Campus food delivery, by students, for students.' },
         { 
           property: 'og:description', 
-          content: 'Your favorite food, delivered fast to your door. Discover the best food vendors in FUNAAB.' 
+          content: 'Campus food delivery, by students, for students.' 
         },
-        { property: 'og:image', content: 'https://satisfy.africa/icon.png' },
+        { property: 'og:image', content: 'https://Gofer.africa/icon.png' },
         { property: 'og:image:width', content: '1200' },
         { property: 'og:image:height', content: '630' },
         
         // Twitter
         { property: 'twitter:card', content: 'summary_large_image' },
-        { property: 'twitter:url', content: 'https://satisfy.africa/' },
-        { property: 'twitter:title', content: 'Satisfy | Your favorite food, delivered fast to your door. Discover the best food vendors in FUNAAB.' },
+        { property: 'twitter:url', content: 'https://Gofer.africa/' },
+        { property: 'twitter:title', content: 'Gofer | Campus food delivery, by students, for students.' },
         { 
           property: 'twitter:description', 
-          content: 'Your favorite food, delivered fast to your door. Discover the best food vendors in FUNAAB.' 
+          content: 'Campus food delivery, by students, for students.' 
         },
-        { property: 'twitter:image', content: 'https://satisfy.africa/icon.png' }
+        { property: 'twitter:image', content: 'https://Gofer.africa/icon.png' }
       ],
       link: [
-        { rel: 'canonical', href: 'https://satisfy.africa/' },
+        { rel: 'canonical', href: 'https://gofer.africa/' },
         { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
         {
           rel: 'stylesheet',
@@ -83,7 +83,7 @@ export default defineNuxtConfig({
   // Set public runtime config
   runtimeConfig: {
     public: {
-      siteUrl: 'https://satisfy.africa',
+      siteUrl: 'https://Gofer.africa',
     }
   },
 
